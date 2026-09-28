@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "3e228bc05bde44d88228",
+  "position": {
+    "x": 1435,
+    "y": 110,
+    "z": 7000,
+    "height": 110,
+    "width": 445,
+    "tabOrder": 7000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Reopen Rate %"
+                }
+              },
+              "queryRef": "_Measures.Reopen Rate %",
+              "nativeQueryRef": "Reopen Rate %"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

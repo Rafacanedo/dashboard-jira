@@ -1,0 +1,38 @@
+table Dim_Category
+	lineageTag: 8dc3f10f-9268-493f-9ffd-c39cb7d18ae8
+
+	column CategoryKey
+		dataType: string
+		isKey
+		lineageTag: eabfd67f-474c-49e8-a56a-f48d04a66736
+		summarizeBy: none
+		sourceColumn: CategoryKey
+
+	column CategoryName
+		dataType: string
+		lineageTag: 9215e41e-20ea-4144-aaa5-6af8e6ac5126
+		summarizeBy: none
+		sourceColumn: CategoryName
+
+	column SubcategoryName
+		dataType: string
+		lineageTag: f09e73ed-7376-4f1a-8a93-48cb43f526f8
+		summarizeBy: none
+		sourceColumn: SubcategoryName
+
+	column Domain
+		dataType: string
+		lineageTag: a7ffb028-fdd8-496b-a3b7-d83e5dd0dfc7
+		summarizeBy: none
+		sourceColumn: Domain
+
+	partition Dim_Category = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Rafael.Canedo\Projects\dashboard-jira\data\processed\Dim_Category.csv"),[Delimiter=",", Columns=4, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"CategoryKey", type text}, {"CategoryName", type text}, {"SubcategoryName", type text}, {"Domain", type text}})
+				in
+				    #"Changed Type"
+

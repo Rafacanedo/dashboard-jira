@@ -1,0 +1,5 @@
+PriorityKey,PriorityCode,PriorityName,SeverityTier,TargetSLA_Hours,TargetSLA_BusinessHours,PrioritySortOrder
+1,P1,1 - Critical,Critical Cloud Outage,4.0,4.0,1
+2,P2,2 - High,Major Service Degradation,8.0,8.0,2
+3,P3,3 - Moderate,Standard Operational Issue,24.0,16.0,3
+4,P4,4 - Low,Minor Request / Inquiry,72.0,40.0,4

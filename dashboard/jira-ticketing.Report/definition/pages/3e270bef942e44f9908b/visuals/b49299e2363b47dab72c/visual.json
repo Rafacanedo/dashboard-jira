@@ -1,0 +1,38 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "b49299e2363b47dab72c",
+  "position": {
+    "x": 505,
+    "y": 110,
+    "z": 5000,
+    "height": 110,
+    "width": 440,
+    "tabOrder": 5000
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "P1 Active Backlog (Point-in-Time)"
+                }
+              },
+              "queryRef": "_Measures.P1 Active Backlog (Point-in-Time)",
+              "nativeQueryRef": "P1 Active Backlog (Point-in-Time)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

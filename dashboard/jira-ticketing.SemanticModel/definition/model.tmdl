@@ -1,0 +1,26 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	valueFilterBehavior: independent
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 0
+
+annotation PBI_ProTooling = ["DevMode"]
+
+annotation PBI_QueryOrder = ["Fact_Incidents","Fact_Transitions","Dim_Calendar","Dim_Priority","Dim_State","Dim_AssignmentGroup","Dim_Category"]
+
+ref table _Measures
+ref table Fact_Incidents
+ref table Fact_Transitions
+ref table Dim_Calendar
+ref table Dim_Priority
+ref table Dim_State
+ref table Dim_AssignmentGroup
+ref table Dim_Category
+
+ref cultureInfo pt-BR
+

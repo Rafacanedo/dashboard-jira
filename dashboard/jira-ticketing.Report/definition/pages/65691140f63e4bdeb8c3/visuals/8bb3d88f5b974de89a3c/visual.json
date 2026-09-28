@@ -1,0 +1,71 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "8bb3d88f5b974de89a3c",
+  "position": {
+    "x": 40,
+    "y": 680,
+    "z": 11000,
+    "height": 360,
+    "width": 800,
+    "tabOrder": 11000
+  },
+  "visual": {
+    "visualType": "clusteredBarChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Priority"
+                    }
+                  },
+                  "Property": "PriorityName"
+                }
+              },
+              "queryRef": "Dim_Priority.PriorityName",
+              "nativeQueryRef": "PriorityName",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "SLA Met Count"
+                }
+              },
+              "queryRef": "_Measures.SLA Met Count",
+              "nativeQueryRef": "SLA Met Count"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "SLA Breached Count"
+                }
+              },
+              "queryRef": "_Measures.SLA Breached Count",
+              "nativeQueryRef": "SLA Breached Count"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,47 @@
+relationship 'Fact_Incidents to Dim_Calendar (Opened)'
+	fromColumn: Fact_Incidents.OpenedDateKey
+	toColumn: Dim_Calendar.DateKey
+
+relationship 'Fact_Incidents to Dim_Calendar (Resolved)'
+	isActive: false
+	fromColumn: Fact_Incidents.ResolvedDateKey
+	toColumn: Dim_Calendar.DateKey
+
+relationship 'Fact_Incidents to Dim_Calendar (Closed)'
+	isActive: false
+	fromColumn: Fact_Incidents.ClosedDateKey
+	toColumn: Dim_Calendar.DateKey
+
+relationship 'Fact_Incidents to Dim_Priority'
+	fromColumn: Fact_Incidents.PriorityKey
+	toColumn: Dim_Priority.PriorityKey
+
+relationship 'Fact_Incidents to Dim_State'
+	fromColumn: Fact_Incidents.FinalStateKey
+	toColumn: Dim_State.StateKey
+
+relationship 'Fact_Incidents to Dim_AssignmentGroup'
+	fromColumn: Fact_Incidents.AssignmentGroupKey
+	toColumn: Dim_AssignmentGroup.AssignmentGroupKey
+
+relationship 'Fact_Incidents to Dim_Category'
+	fromColumn: Fact_Incidents.CategoryKey
+	toColumn: Dim_Category.CategoryKey
+
+relationship 'Fact_Transitions to Fact_Incidents'
+	isActive: false
+	fromColumn: Fact_Transitions.IncidentKey
+	toColumn: Fact_Incidents.IncidentKey
+
+relationship 'Fact_Transitions to Dim_Calendar'
+	fromColumn: Fact_Transitions.TransitionDateKey
+	toColumn: Dim_Calendar.DateKey
+
+relationship 'Fact_Transitions to Dim_State'
+	fromColumn: Fact_Transitions.ToStateKey
+	toColumn: Dim_State.StateKey
+
+relationship 'Fact_Transitions to Dim_AssignmentGroup'
+	fromColumn: Fact_Transitions.AssignmentGroupKey
+	toColumn: Dim_AssignmentGroup.AssignmentGroupKey
+

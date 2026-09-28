@@ -1,0 +1,214 @@
+table Fact_Incidents
+	lineageTag: c5cb89cb-b139-4253-972a-353f4ff3cc85
+
+	column IncidentKey
+		dataType: string
+		isKey
+		lineageTag: 1a60f221-199c-4c81-af6a-79034ee8cf80
+		summarizeBy: none
+		sourceColumn: IncidentKey
+
+	column OpenedDateTime
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn:ss
+		lineageTag: 0366f71a-b01c-4e56-b930-2dc8f1e3dcad
+		summarizeBy: none
+		sourceColumn: OpenedDateTime
+
+	column OpenedDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 9de3bc4c-06ff-4aee-a78b-c0f9a8837c5b
+		summarizeBy: none
+		sourceColumn: OpenedDateKey
+
+	column ResolvedDateTime
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn:ss
+		lineageTag: 00894d8b-1229-405d-98ce-897bb27601d7
+		summarizeBy: none
+		sourceColumn: ResolvedDateTime
+
+	column ResolvedDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 119ae232-903a-469b-bfba-5d2068cc945a
+		summarizeBy: none
+		sourceColumn: ResolvedDateKey
+
+	column ClosedDateTime
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn:ss
+		lineageTag: 7fe1eea2-3876-4538-aa4f-292d44687727
+		summarizeBy: none
+		sourceColumn: ClosedDateTime
+
+	column ClosedDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 132de3ac-1588-4851-befd-8448c4626ecb
+		summarizeBy: none
+		sourceColumn: ClosedDateKey
+
+	column PriorityKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 52cfc7be-b3ff-470b-a7bd-a21b9dddc602
+		summarizeBy: none
+		sourceColumn: PriorityKey
+
+	column Priority
+		dataType: string
+		lineageTag: fcb7d6dc-0c87-46cf-bc5f-cf5f3699e662
+		summarizeBy: none
+		sourceColumn: Priority
+
+	column Impact
+		dataType: string
+		lineageTag: b3f29093-466b-4b94-ad61-9713ff08e7d2
+		summarizeBy: none
+		sourceColumn: Impact
+
+	column Urgency
+		dataType: string
+		lineageTag: 90b8185c-ec75-40f2-8841-38d30c8fe8c8
+		summarizeBy: none
+		sourceColumn: Urgency
+
+	column FinalState
+		dataType: string
+		lineageTag: 8b7ff048-2660-4e7c-9509-4f3567ed5cd5
+		summarizeBy: none
+		sourceColumn: FinalState
+
+	column FinalStateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 67a29d3e-e89d-4781-b629-eeca1d9b17b5
+		summarizeBy: none
+		sourceColumn: FinalStateKey
+
+	column AssignmentGroupKey
+		dataType: string
+		lineageTag: 0431d0b9-8779-4deb-aebd-ae7ef55d8e2d
+		summarizeBy: none
+		sourceColumn: AssignmentGroupKey
+
+	column CategoryKey
+		dataType: string
+		lineageTag: 6f7c4e27-16b1-4ee7-81cf-d281da0ee327
+		summarizeBy: none
+		sourceColumn: CategoryKey
+
+	column CallerID
+		dataType: string
+		lineageTag: e19a3eb2-8fab-4c3f-bdc3-61602166950b
+		summarizeBy: none
+		sourceColumn: CallerID
+
+	column AssignedTo
+		dataType: string
+		lineageTag: 49750b09-1a98-4b43-a1bf-bf81fec2a1bf
+		summarizeBy: none
+		sourceColumn: AssignedTo
+
+	column ContactType
+		dataType: string
+		lineageTag: 25d51920-c564-460d-8878-fc69d30f9f90
+		summarizeBy: none
+		sourceColumn: ContactType
+
+	column ReassignmentCount
+		dataType: int64
+		formatString: 0
+		lineageTag: 8224dc73-99b4-4cba-8a91-bf86906d72dc
+		summarizeBy: sum
+		sourceColumn: ReassignmentCount
+
+	column ReopenCount
+		dataType: int64
+		formatString: 0
+		lineageTag: 344ef65c-8f66-46e2-8020-f26d04c15249
+		summarizeBy: sum
+		sourceColumn: ReopenCount
+
+	column SysModCount
+		dataType: int64
+		formatString: 0
+		lineageTag: 05694c67-8780-4b45-978e-eadbeda5de1d
+		summarizeBy: sum
+		sourceColumn: SysModCount
+
+	column TotalTransitions
+		dataType: int64
+		formatString: 0
+		lineageTag: d5f43c9f-435f-41b2-9c0c-8d05a1370deb
+		summarizeBy: sum
+		sourceColumn: TotalTransitions
+
+	column MadeSLA
+		dataType: int64
+		formatString: 0
+		lineageTag: 5667644d-21cf-47e7-85df-3f8debdf13eb
+		summarizeBy: sum
+		sourceColumn: MadeSLA
+
+	column BreachedSLA
+		dataType: int64
+		formatString: 0
+		lineageTag: 270d989e-0360-40ef-a960-47b27016a828
+		summarizeBy: sum
+		sourceColumn: BreachedSLA
+
+	column IsResolved
+		dataType: int64
+		formatString: 0
+		lineageTag: 6b5da397-c9ed-4d2f-9ef9-80fdfa7b96cc
+		summarizeBy: sum
+		sourceColumn: IsResolved
+
+	column IsClosed
+		dataType: int64
+		formatString: 0
+		lineageTag: 72213c99-0846-4066-9c6a-ad31bb728769
+		summarizeBy: sum
+		sourceColumn: IsClosed
+
+	column MTTR_ClockHours
+		dataType: double
+		formatString: #,##0.0
+		lineageTag: 0f35a70c-fb09-442a-9c99-77f7a591d1fa
+		summarizeBy: average
+		sourceColumn: MTTR_ClockHours
+
+	column MTTR_BusinessHours
+		dataType: double
+		formatString: #,##0.0
+		lineageTag: 7f187466-8317-4d4e-92c5-f703ed41492c
+		summarizeBy: average
+		sourceColumn: MTTR_BusinessHours
+
+	column LeadTime_ClockHours
+		dataType: double
+		formatString: #,##0.0
+		lineageTag: 98220662-b0f2-4562-989c-9b268f30ea30
+		summarizeBy: average
+		sourceColumn: LeadTime_ClockHours
+
+	column LeadTime_BusinessHours
+		dataType: double
+		formatString: #,##0.0
+		lineageTag: 49c000d3-a5f7-428b-b7bd-86589b631011
+		summarizeBy: average
+		sourceColumn: LeadTime_BusinessHours
+
+	partition Fact_Incidents = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Rafael.Canedo\Projects\dashboard-jira\data\processed\Fact_Incidents.csv"),[Delimiter=",", Columns=30, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"IncidentKey", type text}, {"OpenedDateTime", type datetime}, {"OpenedDateKey", Int64.Type}, {"ResolvedDateTime", type datetime}, {"ResolvedDateKey", Int64.Type}, {"ClosedDateTime", type datetime}, {"ClosedDateKey", Int64.Type}, {"PriorityKey", Int64.Type}, {"Priority", type text}, {"Impact", type text}, {"Urgency", type text}, {"FinalState", type text}, {"FinalStateKey", Int64.Type}, {"AssignmentGroupKey", type text}, {"CategoryKey", type text}, {"CallerID", type text}, {"AssignedTo", type text}, {"ContactType", type text}, {"ReassignmentCount", Int64.Type}, {"ReopenCount", Int64.Type}, {"SysModCount", Int64.Type}, {"TotalTransitions", Int64.Type}, {"MadeSLA", Int64.Type}, {"BreachedSLA", Int64.Type}, {"IsResolved", Int64.Type}, {"IsClosed", Int64.Type}, {"MTTR_ClockHours", type number}, {"MTTR_BusinessHours", type number}, {"LeadTime_ClockHours", type number}, {"LeadTime_BusinessHours", type number}})
+				in
+				    #"Changed Type"
+

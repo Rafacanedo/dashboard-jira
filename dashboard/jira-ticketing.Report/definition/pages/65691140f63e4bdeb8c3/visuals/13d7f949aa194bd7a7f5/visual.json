@@ -1,0 +1,108 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "13d7f949aa194bd7a7f5",
+  "position": {
+    "x": 860,
+    "y": 680,
+    "z": 12000,
+    "height": 360,
+    "width": 1020,
+    "tabOrder": 12000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_AssignmentGroup"
+                    }
+                  },
+                  "Property": "Department"
+                }
+              },
+              "queryRef": "Dim_AssignmentGroup.Department",
+              "nativeQueryRef": "Department"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_AssignmentGroup"
+                    }
+                  },
+                  "Property": "SupportTier"
+                }
+              },
+              "queryRef": "Dim_AssignmentGroup.SupportTier",
+              "nativeQueryRef": "SupportTier"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Incidents Opened"
+                }
+              },
+              "queryRef": "_Measures.Incidents Opened",
+              "nativeQueryRef": "Incidents Opened"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Incidents Resolved"
+                }
+              },
+              "queryRef": "_Measures.Incidents Resolved",
+              "nativeQueryRef": "Incidents Resolved"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "SLA Compliance %"
+                }
+              },
+              "queryRef": "_Measures.SLA Compliance %",
+              "nativeQueryRef": "SLA Compliance %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "MTTR (Business Hours)"
+                }
+              },
+              "queryRef": "_Measures.MTTR (Business Hours)",
+              "nativeQueryRef": "MTTR (Business Hours)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

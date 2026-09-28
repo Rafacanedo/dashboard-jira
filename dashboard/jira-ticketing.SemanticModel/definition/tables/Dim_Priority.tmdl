@@ -1,0 +1,60 @@
+table Dim_Priority
+	lineageTag: 585d96c2-fd93-42e2-af24-18b3bac0699b
+
+	column PriorityKey
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: 7d3b1901-aad9-4f73-8442-412f8a5b2ccb
+		summarizeBy: none
+		sourceColumn: PriorityKey
+
+	column PriorityCode
+		dataType: string
+		lineageTag: 344a9efb-8e38-482f-b78f-38637cfefbc2
+		summarizeBy: none
+		sourceColumn: PriorityCode
+		sortByColumn: PrioritySortOrder
+
+	column PriorityName
+		dataType: string
+		lineageTag: 1e6d3d35-4a81-4373-bf7a-c79f5f0280d2
+		summarizeBy: none
+		sourceColumn: PriorityName
+		sortByColumn: PrioritySortOrder
+
+	column SeverityTier
+		dataType: string
+		lineageTag: f8b7d1c2-c0be-4394-9945-5bf493530c2a
+		summarizeBy: none
+		sourceColumn: SeverityTier
+
+	column TargetSLA_Hours
+		dataType: double
+		lineageTag: b17f1556-05b8-4420-b7e1-3ed7106e20f8
+		summarizeBy: average
+		sourceColumn: TargetSLA_Hours
+
+	column TargetSLA_BusinessHours
+		dataType: double
+		lineageTag: 389403cb-0686-40fb-9282-72736c1a4f14
+		summarizeBy: average
+		sourceColumn: TargetSLA_BusinessHours
+
+	column PrioritySortOrder
+		dataType: int64
+		formatString: 0
+		lineageTag: f2ea7109-faab-492c-bf17-8fb916caab1e
+		summarizeBy: none
+		sourceColumn: PrioritySortOrder
+
+	partition Dim_Priority = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Rafael.Canedo\Projects\dashboard-jira\data\processed\Dim_Priority.csv"),[Delimiter=",", Columns=7, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"PriorityKey", Int64.Type}, {"PriorityCode", type text}, {"PriorityName", type text}, {"SeverityTier", type text}, {"TargetSLA_Hours", type number}, {"TargetSLA_BusinessHours", type number}, {"PrioritySortOrder", Int64.Type}})
+				in
+				    #"Changed Type"
+

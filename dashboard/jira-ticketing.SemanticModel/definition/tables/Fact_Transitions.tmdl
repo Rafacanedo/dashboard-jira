@@ -1,0 +1,107 @@
+table Fact_Transitions
+	lineageTag: db8bfb8e-fa34-41f7-bdbd-454c70a4c77b
+
+	column TransitionKey
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: 417a26ea-e222-4eb5-9fae-e18b45bc9b37
+		summarizeBy: none
+		sourceColumn: TransitionKey
+
+	column IncidentKey
+		dataType: string
+		lineageTag: 085d72ad-5a70-4d11-aad2-16cd041cca9d
+		summarizeBy: none
+		sourceColumn: IncidentKey
+
+	column StepNumber
+		dataType: int64
+		formatString: 0
+		lineageTag: 8877eb3e-5922-45ca-94a7-9598bff91094
+		summarizeBy: none
+		sourceColumn: StepNumber
+
+	column FromState
+		dataType: string
+		lineageTag: 712675e7-a2e4-452f-8625-12b34e5dd623
+		summarizeBy: none
+		sourceColumn: FromState
+
+	column ToState
+		dataType: string
+		lineageTag: a3d5e925-29b4-4c10-8ed2-6435dcdc3e43
+		summarizeBy: none
+		sourceColumn: ToState
+
+	column TransitionDateTime
+		dataType: dateTime
+		formatString: yyyy-mm-dd hh:nn:ss
+		lineageTag: 54bebd8e-27cf-4d5b-aebc-8f08c8622928
+		summarizeBy: none
+		sourceColumn: TransitionDateTime
+
+	column TransitionDateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 76d7df64-daa3-413a-a63b-aa6d2d558c13
+		summarizeBy: none
+		sourceColumn: TransitionDateKey
+
+	column AssignmentGroupKey
+		dataType: string
+		lineageTag: 424af375-e0cf-4386-b7fc-d1f8eb6b8c4a
+		summarizeBy: none
+		sourceColumn: AssignmentGroupKey
+
+	column UpdatedBy
+		dataType: string
+		lineageTag: 7991e465-2dd4-47d0-8840-2ae8bdf5bf74
+		summarizeBy: none
+		sourceColumn: UpdatedBy
+
+	column FromStateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 077e45d9-c4fe-444b-8c90-c40123dec981
+		summarizeBy: none
+		sourceColumn: FromStateKey
+
+	column ToStateKey
+		dataType: int64
+		formatString: 0
+		lineageTag: 62315845-97c1-4916-b951-e894cc5a0e7e
+		summarizeBy: none
+		sourceColumn: ToStateKey
+
+	column Duration_ClockHours
+		dataType: double
+		formatString: #,##0.0
+		lineageTag: 51ede48b-a854-4444-aafd-cd60ae23dc48
+		summarizeBy: average
+		sourceColumn: Duration_ClockHours
+
+	column Duration_BusinessHours
+		dataType: double
+		formatString: #,##0.0
+		lineageTag: 00cce15f-98b7-4a17-91c3-d17da72772d6
+		summarizeBy: average
+		sourceColumn: Duration_BusinessHours
+
+	column IsBottleneck
+		dataType: int64
+		formatString: 0
+		lineageTag: 1de96ec9-3dc6-4442-8fe3-363badf63b51
+		summarizeBy: sum
+		sourceColumn: IsBottleneck
+
+	partition Fact_Transitions = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Rafael.Canedo\Projects\dashboard-jira\data\processed\Fact_Transitions.csv"),[Delimiter=",", Columns=14, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"TransitionKey", Int64.Type}, {"IncidentKey", type text}, {"StepNumber", Int64.Type}, {"FromState", type text}, {"ToState", type text}, {"TransitionDateTime", type datetime}, {"TransitionDateKey", Int64.Type}, {"AssignmentGroupKey", type text}, {"UpdatedBy", type text}, {"FromStateKey", Int64.Type}, {"ToStateKey", Int64.Type}, {"Duration_ClockHours", type number}, {"Duration_BusinessHours", type number}, {"IsBottleneck", Int64.Type}})
+				in
+				    #"Changed Type"
+

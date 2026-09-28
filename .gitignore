@@ -1,0 +1,25 @@
+# Power BI Local Session Caches & Locks
+**/.pbi/localSettings.json
+**/.pbi/cache.abf
+**/*.lock
+
+# Uncompressed Raw Event Log (Can be regenerated or extracted from zip)
+data/raw/incident_event_log.csv
+
+# Python environment & cache
+__pycache__/
+*.py[cod]
+*$py.class
+.ipynb_checkpoints/
+.venv/
+env/
+venv/
+
+# Windows / OS files
+.DS_Store
+Thumbs.db
+*.tmp
+
+# Local scripts & DAX references
+scripts/
+dax/

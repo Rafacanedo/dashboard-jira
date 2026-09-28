@@ -1,0 +1,56 @@
+table Dim_State
+	lineageTag: 3044fdce-2d63-4dde-af05-12f2e5456dbf
+
+	column StateKey
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: dd042909-fab0-4ed6-a985-fbeee887c3d8
+		summarizeBy: none
+		sourceColumn: StateKey
+
+	column StateName
+		dataType: string
+		lineageTag: b76ef2b7-43a6-4f9a-b549-ce7758732c08
+		summarizeBy: none
+		sourceColumn: StateName
+		sortByColumn: StateSortOrder
+
+	column StateStage
+		dataType: string
+		lineageTag: 1c3923da-8a11-4764-9248-b0b4bf672225
+		summarizeBy: none
+		sourceColumn: StateStage
+		sortByColumn: StateSortOrder
+
+	column IsActiveBacklog
+		dataType: int64
+		formatString: 0
+		lineageTag: 3959a3bb-e809-417a-b1a4-d834e495acdc
+		summarizeBy: none
+		sourceColumn: IsActiveBacklog
+
+	column IsTerminal
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d824718-9b11-4420-a962-5b80ce974ab9
+		summarizeBy: none
+		sourceColumn: IsTerminal
+
+	column StateSortOrder
+		dataType: int64
+		formatString: 0
+		lineageTag: 0f1adcff-6cf4-440e-b5d5-7d0c23c0c914
+		summarizeBy: none
+		sourceColumn: StateSortOrder
+
+	partition Dim_State = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Rafael.Canedo\Projects\dashboard-jira\data\processed\Dim_State.csv"),[Delimiter=",", Columns=6, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"StateKey", Int64.Type}, {"StateName", type text}, {"StateStage", type text}, {"IsActiveBacklog", Int64.Type}, {"IsTerminal", Int64.Type}, {"StateSortOrder", Int64.Type}})
+				in
+				    #"Changed Type"
+

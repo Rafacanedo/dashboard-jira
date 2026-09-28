@@ -1,0 +1,126 @@
+table Dim_Calendar
+	lineageTag: 85b7a9d1-0f4a-4f96-877b-12141f96815f
+
+	column DateKey
+		dataType: int64
+		isKey
+		formatString: 0
+		lineageTag: f3e5359b-8c95-4458-9c13-2b0adc5b615e
+		summarizeBy: none
+		sourceColumn: DateKey
+
+	column Date
+		dataType: dateTime
+		formatString: yyyy-mm-dd
+		lineageTag: 0cfe1c24-866d-41a7-b907-f1e0f0d0b046
+		summarizeBy: none
+		sourceColumn: Date
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Year
+		dataType: int64
+		formatString: 0
+		lineageTag: c2437161-6c69-4486-ba09-1c391e8ed12b
+		summarizeBy: none
+		sourceColumn: Year
+
+	column Quarter
+		dataType: string
+		lineageTag: bfcc244f-c63b-4717-9b5c-647a5e0fccb5
+		summarizeBy: none
+		sourceColumn: Quarter
+
+	column YearQuarter
+		dataType: string
+		lineageTag: a8a9c89c-bb5d-4348-a9d1-2b51495ea471
+		summarizeBy: none
+		sourceColumn: YearQuarter
+
+	column Month
+		dataType: int64
+		formatString: 0
+		lineageTag: 26c75575-c776-402e-b7ab-b6f18a6c803e
+		summarizeBy: none
+		sourceColumn: Month
+
+	column MonthName
+		dataType: string
+		lineageTag: e015030b-93f1-40ef-89b7-02f763d0672a
+		summarizeBy: none
+		sourceColumn: MonthName
+		sortByColumn: Month
+
+	column MonthShort
+		dataType: string
+		lineageTag: 70fd45c1-f3da-460b-8bfe-e51c066a267c
+		summarizeBy: none
+		sourceColumn: MonthShort
+		sortByColumn: Month
+
+	column YearMonth
+		dataType: string
+		lineageTag: cc9601a2-7079-47d7-b637-8e1f7c5b6ed8
+		summarizeBy: none
+		sourceColumn: YearMonth
+		sortByColumn: YearMonthSort
+
+	column YearMonthSort
+		dataType: int64
+		formatString: 0
+		lineageTag: 2c18a7ee-1e0c-45ff-ac6e-630c23a214e9
+		summarizeBy: none
+		sourceColumn: YearMonthSort
+
+	column WeekOfYear
+		dataType: int64
+		formatString: 0
+		lineageTag: e4f95971-c158-47c3-b910-27c617adc63b
+		summarizeBy: none
+		sourceColumn: WeekOfYear
+
+	column DayOfWeek
+		dataType: int64
+		formatString: 0
+		lineageTag: 48e70086-9653-41e8-9a3c-f4196e869acd
+		summarizeBy: none
+		sourceColumn: DayOfWeek
+
+	column DayName
+		dataType: string
+		lineageTag: 9279e98d-2a30-4272-a7ae-0e9e24ba9b89
+		summarizeBy: none
+		sourceColumn: DayName
+		sortByColumn: DayOfWeek
+
+	column DayShort
+		dataType: string
+		lineageTag: 758f6116-35d2-437f-991a-1b0d34a40dbb
+		summarizeBy: none
+		sourceColumn: DayShort
+		sortByColumn: DayOfWeek
+
+	column IsWeekend
+		dataType: int64
+		formatString: 0
+		lineageTag: a5807aa5-281b-411e-b3cb-8c0a6987c78e
+		summarizeBy: none
+		sourceColumn: IsWeekend
+
+	column IsBusinessDay
+		dataType: int64
+		formatString: 0
+		lineageTag: 51463766-d5ff-4361-9025-bb110f2d741d
+		summarizeBy: none
+		sourceColumn: IsBusinessDay
+
+	partition Dim_Calendar = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Rafael.Canedo\Projects\dashboard-jira\data\processed\Dim_Calendar.csv"),[Delimiter=",", Columns=16, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"DateKey", Int64.Type}, {"Date", type date}, {"Year", Int64.Type}, {"Quarter", type text}, {"YearQuarter", type text}, {"Month", Int64.Type}, {"MonthName", type text}, {"MonthShort", type text}, {"YearMonth", type text}, {"YearMonthSort", Int64.Type}, {"WeekOfYear", Int64.Type}, {"DayOfWeek", Int64.Type}, {"DayName", type text}, {"DayShort", type text}, {"IsWeekend", Int64.Type}, {"IsBusinessDay", Int64.Type}})
+				in
+				    #"Changed Type"
+

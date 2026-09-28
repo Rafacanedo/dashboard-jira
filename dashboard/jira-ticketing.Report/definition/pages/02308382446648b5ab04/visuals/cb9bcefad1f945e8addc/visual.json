@@ -1,0 +1,71 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "cb9bcefad1f945e8addc",
+  "position": {
+    "x": 960,
+    "y": 240,
+    "z": 9000,
+    "height": 420,
+    "width": 920,
+    "tabOrder": 9000
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_State"
+                    }
+                  },
+                  "Property": "StateStage"
+                }
+              },
+              "queryRef": "Dim_State.StateStage",
+              "nativeQueryRef": "StateStage",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Transitions"
+                }
+              },
+              "queryRef": "_Measures.Total Transitions",
+              "nativeQueryRef": "Total Transitions"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Bottleneck Events Count"
+                }
+              },
+              "queryRef": "_Measures.Bottleneck Events Count",
+              "nativeQueryRef": "Bottleneck Events Count"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

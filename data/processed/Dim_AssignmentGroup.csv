@@ -1,0 +1,80 @@
+AssignmentGroupKey,AssignmentGroupName,Department,SupportTier,TechnicalLead
+Unassigned,Unassigned,Triage & Service Desk,Tier 1 Support,Lead Triage
+Group 10,Group 10,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 10
+Group 11,Group 11,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 11
+Group 12,Group 12,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 12
+Group 13,Group 13,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 13
+Group 14,Group 14,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 14
+Group 15,Group 15,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 15
+Group 16,Group 16,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 16
+Group 17,Group 17,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 17
+Group 18,Group 18,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 18
+Group 19,Group 19,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 19
+Group 2,Group 2,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 2
+Group 20,Group 20,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 20
+Group 21,Group 21,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 21
+Group 22,Group 22,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 22
+Group 23,Group 23,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 23
+Group 24,Group 24,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 24
+Group 25,Group 25,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 25
+Group 26,Group 26,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 26
+Group 27,Group 27,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 27
+Group 28,Group 28,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 28
+Group 29,Group 29,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 29
+Group 3,Group 3,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 3
+Group 30,Group 30,DevOps & CI/CD Platform,Tier 2 - DevOps Engineering,Tech Lead 30
+Group 31,Group 31,Database & Messaging (Postgres/Kafka),Tier 3 - DBA & Data Infra,Tech Lead 31
+Group 32,Group 32,Database & Messaging (Postgres/Kafka),Tier 3 - DBA & Data Infra,Tech Lead 32
+Group 33,Group 33,Database & Messaging (Postgres/Kafka),Tier 3 - DBA & Data Infra,Tech Lead 33
+Group 34,Group 34,Database & Messaging (Postgres/Kafka),Tier 3 - DBA & Data Infra,Tech Lead 34
+Group 35,Group 35,Database & Messaging (Postgres/Kafka),Tier 3 - DBA & Data Infra,Tech Lead 35
+Group 36,Group 36,Database & Messaging (Postgres/Kafka),Tier 3 - DBA & Data Infra,Tech Lead 36
+Group 37,Group 37,Database & Messaging (Postgres/Kafka),Tier 3 - DBA & Data Infra,Tech Lead 37
+Group 38,Group 38,Database & Messaging (Postgres/Kafka),Tier 3 - DBA & Data Infra,Tech Lead 38
+Group 39,Group 39,Database & Messaging (Postgres/Kafka),Tier 3 - DBA & Data Infra,Tech Lead 39
+Group 4,Group 4,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 4
+Group 41,Group 41,Database & Messaging (Postgres/Kafka),Tier 3 - DBA & Data Infra,Tech Lead 41
+Group 43,Group 43,Database & Messaging (Postgres/Kafka),Tier 3 - DBA & Data Infra,Tech Lead 43
+Group 44,Group 44,Database & Messaging (Postgres/Kafka),Tier 3 - DBA & Data Infra,Tech Lead 44
+Group 45,Group 45,Database & Messaging (Postgres/Kafka),Tier 3 - DBA & Data Infra,Tech Lead 45
+Group 46,Group 46,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 46
+Group 47,Group 47,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 47
+Group 48,Group 48,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 48
+Group 49,Group 49,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 49
+Group 5,Group 5,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 5
+Group 50,Group 50,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 50
+Group 51,Group 51,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 51
+Group 53,Group 53,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 53
+Group 54,Group 54,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 54
+Group 55,Group 55,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 55
+Group 56,Group 56,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 56
+Group 57,Group 57,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 57
+Group 58,Group 58,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 58
+Group 59,Group 59,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 59
+Group 6,Group 6,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 6
+Group 60,Group 60,Network & Security (VPN/Firewall),Tier 2 - Network Engineering,Tech Lead 60
+Group 61,Group 61,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 61
+Group 62,Group 62,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 62
+Group 63,Group 63,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 63
+Group 64,Group 64,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 64
+Group 65,Group 65,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 65
+Group 66,Group 66,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 66
+Group 67,Group 67,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 67
+Group 68,Group 68,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 68
+Group 69,Group 69,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 69
+Group 7,Group 7,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 7
+Group 70,Group 70,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 70
+Group 71,Group 71,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 71
+Group 72,Group 72,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 72
+Group 73,Group 73,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 73
+Group 74,Group 74,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 74
+Group 75,Group 75,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 75
+Group 76,Group 76,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 76
+Group 77,Group 77,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 77
+Group 78,Group 78,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 78
+Group 79,Group 79,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 79
+Group 8,Group 8,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 8
+Group 80,Group 80,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 80
+Group 81,Group 81,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 81
+Group 82,Group 82,Enterprise Applications & Services,Tier 1 - Service Desk,Tech Lead 82
+Group 9,Group 9,Cloud & Infrastructure (AWS/Azure),Tier 3 - SRE / Cloud Platform,Tech Lead 9

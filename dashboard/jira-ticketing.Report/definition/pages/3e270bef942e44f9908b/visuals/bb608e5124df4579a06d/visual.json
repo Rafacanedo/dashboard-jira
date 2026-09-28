@@ -1,0 +1,173 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.12.0/schema.json",
+  "name": "bb608e5124df4579a06d",
+  "position": {
+    "x": 40,
+    "y": 680,
+    "z": 10000,
+    "height": 360,
+    "width": 1840,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_AssignmentGroup"
+                    }
+                  },
+                  "Property": "Department"
+                }
+              },
+              "queryRef": "Dim_AssignmentGroup.Department",
+              "nativeQueryRef": "Department"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_AssignmentGroup"
+                    }
+                  },
+                  "Property": "AssignmentGroupName"
+                }
+              },
+              "queryRef": "Dim_AssignmentGroup.AssignmentGroupName",
+              "nativeQueryRef": "AssignmentGroupName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Category"
+                    }
+                  },
+                  "Property": "CategoryName"
+                }
+              },
+              "queryRef": "Dim_Category.CategoryName",
+              "nativeQueryRef": "CategoryName"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Incidents Opened"
+                }
+              },
+              "queryRef": "_Measures.Incidents Opened",
+              "nativeQueryRef": "Incidents Opened"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "SLA Compliance %"
+                }
+              },
+              "queryRef": "_Measures.SLA Compliance %",
+              "nativeQueryRef": "SLA Compliance %"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "MTTR (Business Hours)"
+                }
+              },
+              "queryRef": "_Measures.MTTR (Business Hours)",
+              "nativeQueryRef": "MTTR (Business Hours)"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "MTTR Variance to SLA (Hours)"
+                }
+              },
+              "queryRef": "_Measures.MTTR Variance to SLA (Hours)",
+              "nativeQueryRef": "MTTR Variance to SLA (Hours)"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "371.06080107197147D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_AssignmentGroup.Department"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "269.88147759638D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_AssignmentGroup.AssignmentGroupName"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "118.58966731911643D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Dim_Category.CategoryName"
+          }
+        }
+      ],
+      "columnHeaders": [
+        {
+          "properties": {}
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

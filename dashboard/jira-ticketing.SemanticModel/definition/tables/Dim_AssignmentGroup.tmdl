@@ -1,0 +1,44 @@
+table Dim_AssignmentGroup
+	lineageTag: af385b4f-6fb9-436b-a91b-ac8d8ca51e3a
+
+	column AssignmentGroupKey
+		dataType: string
+		isKey
+		lineageTag: efd43abb-d43a-4c86-aaaf-b122658f5c32
+		summarizeBy: none
+		sourceColumn: AssignmentGroupKey
+
+	column AssignmentGroupName
+		dataType: string
+		lineageTag: 0b8d5ec2-7304-4bad-ab26-f2ce5d919411
+		summarizeBy: none
+		sourceColumn: AssignmentGroupName
+
+	column Department
+		dataType: string
+		lineageTag: 0483a61f-1766-4e2c-9217-d239f639c6ed
+		summarizeBy: none
+		sourceColumn: Department
+
+	column SupportTier
+		dataType: string
+		lineageTag: df21cf7f-5306-431f-95bc-9828d9665f23
+		summarizeBy: none
+		sourceColumn: SupportTier
+
+	column TechnicalLead
+		dataType: string
+		lineageTag: 8002d55d-8c4c-4313-81d1-5887216a2fb7
+		summarizeBy: none
+		sourceColumn: TechnicalLead
+
+	partition Dim_AssignmentGroup = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents("C:\Users\Rafael.Canedo\Projects\dashboard-jira\data\processed\Dim_AssignmentGroup.csv"),[Delimiter=",", Columns=5, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"AssignmentGroupKey", type text}, {"AssignmentGroupName", type text}, {"Department", type text}, {"SupportTier", type text}, {"TechnicalLead", type text}})
+				in
+				    #"Changed Type"
+

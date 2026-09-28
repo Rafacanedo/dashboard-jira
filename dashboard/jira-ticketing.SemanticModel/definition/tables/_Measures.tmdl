@@ -1,0 +1,154 @@
+table _Measures
+	lineageTag: d15bb25a-327a-4223-8774-07e7531ec916
+
+	measure 'Incidents Opened' = COUNTROWS('Fact_Incidents')
+		formatString: #,##0
+		displayFolder: 1. Inflow & Outflow
+		lineageTag: 924c36e0-18d8-4fcb-b5dd-5920c2484805
+
+	measure 'Incidents Resolved' = CALCULATE(COUNTROWS('Fact_Incidents'), USERELATIONSHIP('Fact_Incidents'[ResolvedDateKey], 'Dim_Calendar'[DateKey]), 'Fact_Incidents'[IsResolved] = 1)
+		formatString: #,##0
+		displayFolder: 1. Inflow & Outflow
+		lineageTag: 7afedc69-c788-4ae8-a97c-bc8d1983f5b4
+
+	measure 'Incidents Closed' = CALCULATE(COUNTROWS('Fact_Incidents'), USERELATIONSHIP('Fact_Incidents'[ClosedDateKey], 'Dim_Calendar'[DateKey]), 'Fact_Incidents'[IsClosed] = 1)
+		formatString: #,##0
+		displayFolder: 1. Inflow & Outflow
+		lineageTag: b03138b8-21db-4ee8-abe1-9c25c4b5ddfc
+
+	measure 'Net Inflow' = [Incidents Opened] - [Incidents Resolved]
+		formatString: +#,#0;-#,#0;0
+		displayFolder: 1. Inflow & Outflow
+		lineageTag: 9f6a58eb-6bef-4026-a66c-48daa0e28cd7
+
+	measure 'Cumulative Incidents Opened' = CALCULATE([Incidents Opened], FILTER(ALLSELECTED('Dim_Calendar'), 'Dim_Calendar'[Date] <= MAX('Dim_Calendar'[Date])))
+		formatString: #,##0
+		displayFolder: 1. Inflow & Outflow
+		lineageTag: 5b58807f-fbfe-4c78-a148-a0067d24aaca
+
+	measure 'Cumulative Incidents Resolved' = CALCULATE([Incidents Resolved], FILTER(ALLSELECTED('Dim_Calendar'), 'Dim_Calendar'[Date] <= MAX('Dim_Calendar'[Date])))
+		formatString: #,##0
+		displayFolder: 1. Inflow & Outflow
+		lineageTag: 1edd65f2-a8b2-42ba-83d7-11500233e887
+
+	measure 'Active Backlog (Point-in-Time)' = VAR MaxSelectedDate = MAX('Dim_Calendar'[Date]) VAR EndOfDayTimestamp = MaxSelectedDate + TIME(23, 59, 59) VAR MinAvailableDate = MIN('Fact_Incidents'[OpenedDateTime]) RETURN IF(MaxSelectedDate >= DATEVALUE(MinAvailableDate), CALCULATE(COUNTROWS('Fact_Incidents'), FILTER(ALL('Fact_Incidents'), 'Fact_Incidents'[OpenedDateTime] <= EndOfDayTimestamp && (ISBLANK('Fact_Incidents'[ResolvedDateTime]) || 'Fact_Incidents'[ResolvedDateTime] > EndOfDayTimestamp))), BLANK())
+		formatString: #,##0
+		displayFolder: 2. Backlog & Aging
+		lineageTag: d75b944f-782f-4340-8151-65b3d9bef754
+
+	measure 'P1 Active Backlog (Point-in-Time)' = CALCULATE([Active Backlog (Point-in-Time)], 'Dim_Priority'[PriorityKey] = 1)
+		formatString: #,##0
+		displayFolder: 2. Backlog & Aging
+		lineageTag: 66e8825c-dd52-4f33-adf6-b86ca70aca6f
+
+	measure 'Avg Open Backlog Age (Days)' = VAR ReferenceDate = MAX('Dim_Calendar'[Date]) RETURN CALCULATE(AVERAGEX(FILTER('Fact_Incidents', ISBLANK('Fact_Incidents'[ResolvedDateTime]) || 'Fact_Incidents'[ResolvedDateTime] > ReferenceDate), DATEDIFF('Fact_Incidents'[OpenedDateTime], ReferenceDate, DAY)))
+		formatString: #,##0.0
+		displayFolder: 2. Backlog & Aging
+		lineageTag: e0292cb0-c2dd-4a46-9905-5f9e36695565
+
+	measure 'SLA Met Count' = CALCULATE(COUNTROWS('Fact_Incidents'), 'Fact_Incidents'[MadeSLA] = 1)
+		formatString: #,##0
+		displayFolder: 3. SLA Compliance
+		lineageTag: 19a90ac0-e8b4-4958-adf6-fb344202f781
+
+	measure 'SLA Breached Count' = CALCULATE(COUNTROWS('Fact_Incidents'), 'Fact_Incidents'[BreachedSLA] = 1)
+		formatString: #,##0
+		displayFolder: 3. SLA Compliance
+		lineageTag: 9f328aa3-79ea-44a9-a041-48b67992e5d3
+
+	measure 'SLA Compliance %' = DIVIDE([SLA Met Count], COUNTROWS('Fact_Incidents'), 0)
+		formatString: 0.0%
+		displayFolder: 3. SLA Compliance
+		lineageTag: fe51b162-b044-4f55-b3c2-23183fed8a3e
+
+	measure 'SLA Breach %' = DIVIDE([SLA Breached Count], COUNTROWS('Fact_Incidents'), 0)
+		formatString: 0.0%
+		displayFolder: 3. SLA Compliance
+		lineageTag: 6c9360ab-ffe6-4457-95e7-7d2416f65720
+
+	measure 'P1 SLA Compliance %' = CALCULATE([SLA Compliance %], 'Dim_Priority'[PriorityKey] = 1)
+		formatString: 0.0%
+		displayFolder: 3. SLA Compliance
+		lineageTag: 56353127-415e-47eb-b13e-6642605fd8b8
+
+	measure 'SLA Status Indicator' = SWITCH(TRUE(), [SLA Compliance %] >= 0.95, "PASS (Target Met)", [SLA Compliance %] >= 0.85, "WARNING (At Risk)", "BREACH (Critical)")
+		displayFolder: 3. SLA Compliance
+		lineageTag: 9af67363-34b1-45ff-8ec9-9c097c70b677
+
+	measure 'MTTR (Business Hours)' = CALCULATE(AVERAGE('Fact_Incidents'[MTTR_BusinessHours]), 'Fact_Incidents'[IsResolved] = 1)
+		formatString: #,##0.0 "hrs"
+		displayFolder: 4. MTTR & Durations
+		lineageTag: a9e410e6-272c-4838-ada7-914f7f47239d
+
+	measure 'MTTR (Clock Hours)' = CALCULATE(AVERAGE('Fact_Incidents'[MTTR_ClockHours]), 'Fact_Incidents'[IsResolved] = 1)
+		formatString: #,##0.0 "hrs"
+		displayFolder: 4. MTTR & Durations
+		lineageTag: d1c25c7a-af7e-417e-ad55-0ae2bc0be5c2
+
+	measure 'Median MTTR (Business Hours)' = CALCULATE(MEDIAN('Fact_Incidents'[MTTR_BusinessHours]), 'Fact_Incidents'[IsResolved] = 1)
+		formatString: #,##0.0 "hrs"
+		displayFolder: 4. MTTR & Durations
+		lineageTag: 54a4e289-e224-4782-83eb-1fa8b3161624
+
+	measure 'Lead Time (Business Hours)' = CALCULATE(AVERAGE('Fact_Incidents'[LeadTime_BusinessHours]), 'Fact_Incidents'[IsClosed] = 1)
+		formatString: #,##0.0 "hrs"
+		displayFolder: 4. MTTR & Durations
+		lineageTag: 51def089-ae47-492c-b0e1-15123504dcba
+
+	measure 'Target SLA (Business Hours)' = AVERAGE('Dim_Priority'[TargetSLA_BusinessHours])
+		formatString: #,##0.0 "hrs"
+		displayFolder: 4. MTTR & Durations
+		lineageTag: 8749434b-7bc9-408c-8471-de27f5f895ee
+
+	measure 'MTTR Variance to SLA (Hours)' = [MTTR (Business Hours)] - [Target SLA (Business Hours)]
+		formatString: +#,#0.0;-#,#0.0;0.0
+		displayFolder: 4. MTTR & Durations
+		lineageTag: 2b414d8b-acd6-40b5-b2f7-d4ba1db5a749
+
+	measure 'Total Transitions' = COUNTROWS('Fact_Transitions')
+		formatString: #,##0
+		displayFolder: 5. Process Mining & Churn
+		lineageTag: 5728ed7e-d74b-4ed4-bb26-90b8a60f9ede
+
+	measure 'Avg Duration in State (Business Hours)' = AVERAGE('Fact_Transitions'[Duration_BusinessHours])
+		formatString: #,##0.0 "hrs"
+		displayFolder: 5. Process Mining & Churn
+		lineageTag: 4ba42164-a946-49a6-9aba-92de3d1d47a0
+
+	measure 'Avg Duration in State (Clock Hours)' = AVERAGE('Fact_Transitions'[Duration_ClockHours])
+		formatString: #,##0.0 "hrs"
+		displayFolder: 5. Process Mining & Churn
+		lineageTag: 46a01587-0d2f-41d2-aa4c-852b55532d85
+
+	measure 'Bottleneck Events Count' = CALCULATE(COUNTROWS('Fact_Transitions'), 'Fact_Transitions'[IsBottleneck] = 1)
+		formatString: #,##0
+		displayFolder: 5. Process Mining & Churn
+		lineageTag: 596ef707-ab0d-4e6c-b3cf-3ae0b5f86855
+
+	measure 'Avg Reassignments per Incident' = AVERAGE('Fact_Incidents'[ReassignmentCount])
+		formatString: 0.00
+		displayFolder: 5. Process Mining & Churn
+		lineageTag: 1bc12e60-3f46-457c-a5ee-3fb664896cce
+
+	measure 'High Reassignment Incidents (>= 3)' = CALCULATE(COUNTROWS('Fact_Incidents'), 'Fact_Incidents'[ReassignmentCount] >= 3)
+		formatString: #,##0
+		displayFolder: 5. Process Mining & Churn
+		lineageTag: 7d704801-4f2a-483b-ac72-d857252a52a5
+
+	measure 'Reopen Rate %' = DIVIDE(CALCULATE(COUNTROWS('Fact_Incidents'), 'Fact_Incidents'[ReopenCount] > 0), COUNTROWS('Fact_Incidents'), 0)
+		formatString: 0.0%
+		displayFolder: 5. Process Mining & Churn
+		lineageTag: d0d97d16-2489-4e98-bc01-adc70e46c494
+
+	column MeasureIndex
+		dataType: int64
+		isHidden
+		formatString: 0
+		lineageTag: 48e89408-569d-4735-a1c1-4b1154c51234
+		summarizeBy: none
+		sourceColumn: [Value]
+
+	partition _Measures = calculated
+		mode: import
+		source = {1}
+

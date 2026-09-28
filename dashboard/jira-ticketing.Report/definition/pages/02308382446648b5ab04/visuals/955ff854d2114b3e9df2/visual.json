@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "955ff854d2114b3e9df2",
+  "position": {
+    "x": 40,
+    "y": 680,
+    "z": 10000,
+    "height": 360,
+    "width": 1840,
+    "tabOrder": 10000
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_Priority"
+                    }
+                  },
+                  "Property": "PriorityName"
+                }
+              },
+              "queryRef": "Dim_Priority.PriorityName",
+              "nativeQueryRef": "PriorityName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Dim_AssignmentGroup"
+                    }
+                  },
+                  "Property": "AssignmentGroupName"
+                }
+              },
+              "queryRef": "Dim_AssignmentGroup.AssignmentGroupName",
+              "nativeQueryRef": "AssignmentGroupName"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Fact_Incidents"
+                    }
+                  },
+                  "Property": "FinalState"
+                }
+              },
+              "queryRef": "Fact_Incidents.FinalState",
+              "nativeQueryRef": "FinalState"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Incidents Opened"
+                }
+              },
+              "queryRef": "_Measures.Incidents Opened",
+              "nativeQueryRef": "Incidents Opened"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Total Transitions"
+                }
+              },
+              "queryRef": "_Measures.Total Transitions",
+              "nativeQueryRef": "Total Transitions"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "Avg Reassignments per Incident"
+                }
+              },
+              "queryRef": "_Measures.Avg Reassignments per Incident",
+              "nativeQueryRef": "Avg Reassignments per Incident"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "_Measures"
+                    }
+                  },
+                  "Property": "MTTR (Business Hours)"
+                }
+              },
+              "queryRef": "_Measures.MTTR (Business Hours)",
+              "nativeQueryRef": "MTTR (Business Hours)"
+            }
+          ]
+        }
+      }
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
